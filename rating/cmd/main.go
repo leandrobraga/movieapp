@@ -14,4 +14,7 @@ func main() {
 	ctrl := rating.New(repo)
 	h := httphanlder.New(ctrl)
 	http.Handle("/rating", http.HandlerFunc(h.Handle))
+	if err := http.ListenAndServe(":8082", nil); err != nil {
+		panic(err)
+	}
 }
