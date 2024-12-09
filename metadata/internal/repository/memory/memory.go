@@ -17,7 +17,7 @@ func New() *Repository {
 }
 
 func (r *Repository) Get(_ context.Context, id string) (*model.Metadata, error) {
-	r.Lock()
+	r.RLock()
 	defer r.RUnlock()
 
 	m, ok := r.data[id]
